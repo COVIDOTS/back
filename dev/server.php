@@ -16,7 +16,6 @@ $db =  oci_connect("ecoron", "qwerty123", "//localhost/orcl");
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
-  $user_id = $_POST['user_id'];
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $city = $_POST['city'];
@@ -53,9 +52,10 @@ if (isset($_POST['reg_user'])) {
   echo 'hi';
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = md5($password_1);//encrypt the password before saving in the database
+    $password = md5($password_1);//encrypt the password before saving in the database
+    $nextValue = oci_parse("select user_seq.nextval from dual");
     echo 'inserting for you a';
-  	$query = oci_parse($db, "call insertUser(10172, 'Aruzhan', 'Serikbayeva','Nur-Sultan', '87783120332','180107217@stu.sdu.edu.kz', 'Hello')");
+  	$query = oci_parse($db, "call insertUser($nextValue, $first_name, $last_name, $city, $contact_number,$email, $password)");
 
     $result = oci_parse($db, $query);
     oci_execute($result, OCI_DEFAULT);
@@ -73,7 +73,7 @@ if (isset($_POST['reg_user'])) {
   	header('location: index.php'); //here we go to the main page
   }
   else{
-    echo 'sxff';
+    echo 'There is an error! sorry(';
   }
 }
 
@@ -90,8 +90,8 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
-        $password = md5($password);
-        $query = "SELECT COUNT(*) FROM users WHERE email='$email' AND password='$password'";
+        $new_password = md5($password);
+        $query = "SELECT COUNT(*) FROM users WHERE email='$email'";
         
         $results = oci_parse($db, $query);
         oci_execute($results);
