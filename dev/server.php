@@ -82,7 +82,7 @@ if (isset($_POST['login_user'])) {
     $password =  $_POST['password'];
   
     if (empty($email)) {
-        array_push($errors, "Username is required");
+        array_push($errors, "Email is required");
     }
     if (empty($password)) {
         array_push($errors, "Password is required");
@@ -90,7 +90,7 @@ if (isset($_POST['login_user'])) {
 
     if (count($errors) == 0) {
         $new_password = md5($password);
-        $query = "SELECT COUNT(*) FROM users WHERE email='$email'";
+        $query = "SELECT COUNT(*) FROM users WHERE email='$email'AND password='$password'";
         
         $results = oci_parse($db, $query);
         oci_execute($results);
@@ -102,9 +102,9 @@ if (isset($_POST['login_user'])) {
         if ($results['COUNT(*)'][0] == 1) {
           $_SESSION['email'] = $email;
           $_SESSION['success'] = "You are now logged in";
-          header('location: index.php');
+          header('location: index2.php');
         }else {
-            array_push($errors, "Wrong username/password combination");
+            array_push($errors, "Wrong email/password combination");
         }
     }
   }

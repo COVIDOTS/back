@@ -1,69 +1,186 @@
-* {
-  margin: 0px;
-  padding: 0px;
+:root {
+  --black: #121212;
+  --dblue: #004FA8;
+  --lblue: #3CB9EE;
+  --mblue: #1A76DC;
 }
-body {
-  font-size: 120%;
-  background: #f8f8ff;
+.container {
+	
+}
+.nav {
+	margin: 2vh 0vh;
+}
+.nav-link {
+	color: var(--black);
+	font-size: 14px;
+	font-weight: 500;
+}
+.nav-link:hover {
+	color: var(--dblue);
+	border-bottom: 2px solid var(--dblue);
+}
+.nav-link:active {
+	border-bottom: 2px solid var(--dblue) !important;
+}
+.navwhite {
+	color: white;
+}
+.navwhite .nav-link {
+	color: white;
+}
+.navwhite .nav-link:hover {
+	border-bottom: 2px solid white;
+}
+.navsectorwhite {
+	border-bottom: 1px solid white !important;
+}
+.navsector {
+	border-bottom: 1px solid #3CB9EE;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+}
+.col-4 {
+	display: flex;
+	justify-content: center;
+}
+.sch {	 
+	background-image: linear-gradient(120deg, #004FA8, #1A76DC 75%) !important;
+	color: white;
+	border-radius: 5px;
+	display: flex;
+	justify-content: flex-start;
+	height: 370px;
+	flex-direction: column;
+	padding:0px;
+}
+.sch h5{
+	font-weight: 400 ;
+	
+	margin-top: 2vh;
+}
+.mon {
+	text-align: center;
+	border-right: 1px solid white;
+	padding: 10px 25px;
+	width: 100px;
+	font-size: 18px;
+	vertical-align: center !important;
+
+}
+.insidesch {
+	display: flex;
+	
+	margin: 15px -15px;
+}
+.insidesch:hover {
+	background-color: #004FA8;
+}
+.insidesch2 {
+	display: flex;
+	flex-direction: column;
+	
+}
+.insidesch2 div {
+	display: flex;
+	flex-direction: column;
+	
+}
+.mainblock {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 3vh;
+}
+.mainblock div {
+
+}
+.maintext {
+	height: 359px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.maintext h1 {
+	font-size: 32px;
+	font-weight: 700;
+	background: -webkit-linear-gradient(#1A76DC, #004FA8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.maintext p {
+	color: var(--black);
+	margin-top: 1vh;
 }
 
-.header {
-  width: 30%;
-  margin: 50px auto 0px;
-  color: white;
-  background: #5f9ea0;
-  text-align: center;
-  border: 1px solid #b0c4de;
-  border-bottom: none;
-  border-radius: 10px 10px 0px 0px;
-  padding: 20px;
+.news {
+	padding-top: 5vh;
+	padding-bottom: 5vh;
 }
-form,
-.content {
-  width: 30%;
-  margin: 0px auto;
-  padding: 20px;
-  border: 1px solid #b0c4de;
-  background: white;
-  border-radius: 0px 0px 10px 10px;
+.news h1 {
+	font-size: 30px;
+	font-weight: 700;
+	color: var(--dblue);
 }
-.input-group {
-  margin: 10px 0px 10px 0px;
+.newsblocks {
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
-.input-group label {
-  display: block;
-  text-align: left;
-  margin: 3px;
+.newsblocks div {	
+	height: 180px !important;
+	border: 1px solid var(--mblue);
+	border-radius: 5px;
+	padding: 10px;
 }
-.input-group input {
-  height: 30px;
-  width: 93%;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
+.newstext {
+	margin: 0;
+	width: 180px;
+	border: none !important;
 }
-.btn {
-  padding: 10px;
-  font-size: 15px;
-  color: white;
-  background: #5f9ea0;
-  border: none;
-  border-radius: 5px;
+
+.btn-primary {
+	margin-top: 15px;
+	padding: 8px 25px !important;
+	background-image: linear-gradient(45deg, #004FA8, #1A76DC 75%) !important;
+
 }
-.error {
-  width: 92%;
-  margin: 0px auto;
-  padding: 10px;
-  border: 1px solid #a94442;
-  color: #a94442;
-  background: #f2dede;
-  border-radius: 5px;
-  text-align: left;
+.btn-primary:hover {
+	background-image: none !important;
+	background-color: #004FA8 !important;
+
 }
-.success {
-  color: #3c763d;
-  background: #dff0d8;
-  border: 1px solid #3c763d;
-  margin-bottom: 20px;
+.btnwhite:hover {
+	background-color: white !important;
+	color: var(--dblue) !important;
 }
+.footer {
+	border-top: 2px solid var(--mblue);
+	margin: 2vh 0vh;
+	color: var(--mblue);
+	padding: 2vh 0vw;
+	display: flex;
+	flex-direction: row !important;
+	justify-content: space-between;
+}
+.icondiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.fwhite {
+	color: white;
+	border-top: 2px solid white;
+}
+
+.form-control {
+	width: 400px !important;
+	height: 45px !important;
+	background-color: transparent !important;
+	border: 1px solid white;
+}
+.form-group {
+	margin: 25px 0px;
+}
+
