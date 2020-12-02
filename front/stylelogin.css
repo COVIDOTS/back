@@ -1,0 +1,17 @@
+.mainblock2 {
+	margin: 5vh 0vw;
+	display: flex;
+	justify-content: space-between;
+	color: white;
+}
+.loginside {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+.ltext {
+	margin-top: 25px;
+	margin-bottom: -1px;
+	font-size: 14px !important;
+}
