@@ -188,4 +188,9 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+.dark {
+	background-image: url(images/back.jpg); 
+	background-repeat: no-repeat;
+	background-color: black;
+}
 
