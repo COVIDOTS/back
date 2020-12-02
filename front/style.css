@@ -22,6 +22,18 @@
 .nav-link:active {
 	border-bottom: 2px solid var(--dblue) !important;
 }
+.navwhite {
+	color: white;
+}
+.navwhite .nav-link {
+	color: white;
+}
+.navwhite .nav-link:hover {
+	border-bottom: 2px solid white;
+}
+.navsectorwhite {
+	border-bottom: 1px solid white !important;
+}
 .navsector {
 	border-bottom: 1px solid #3CB9EE;
 	padding-bottom: 1vh;
@@ -139,6 +151,10 @@
 	background-color: #004FA8 !important;
 
 }
+.btnwhite:hover {
+	background-color: white !important;
+	color: var(--dblue) !important;
+}
 .footer {
 	border-top: 2px solid var(--mblue);
 	margin: 2vh 0vh;
@@ -153,4 +169,18 @@
 	justify-content: space-between;
 }
 
+.fwhite {
+	color: white;
+	border-top: 2px solid white;
+}
+
+.form-control {
+	width: 400px !important;
+	height: 45px !important;
+	background-color: transparent !important;
+	border: 1px solid white;
+}
+.form-group {
+	margin: 25px 0px;
+}
 
