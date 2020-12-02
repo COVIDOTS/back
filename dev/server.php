@@ -2,7 +2,6 @@
 session_start();
 
 // initializing variables
-$user_id = "";
 $first_name  = "";
 $last_name = "";
 $city = "";
@@ -53,9 +52,8 @@ if (isset($_POST['reg_user'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
-    $nextValue = oci_parse("select user_seq.nextval from dual");
     echo 'inserting for you a';
-  	$query = oci_parse($db, "call insertUser($nextValue, $first_name, $last_name, $city, $contact_number,$email, $password)");
+  	$query = oci_parse($db, "call insertUser(user_seq.NEXTVAL, '$first_name', '$last_name', '$city', '$contact_number', '$email', '$password')");
 
     $result = oci_parse($db, $query);
     oci_execute($result, OCI_DEFAULT);
@@ -69,7 +67,8 @@ if (isset($_POST['reg_user'])) {
     //var_dump($cq);
 
   	$_SESSION['email'] = $email;
-  	$_SESSION['success'] = "Congratulations! You have registered";
+    $_SESSION['success'] = "Congratulations! You have registered";
+    
   	header('location: index.php'); //here we go to the main page
   }
   else{
