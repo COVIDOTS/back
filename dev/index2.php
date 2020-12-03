@@ -82,7 +82,7 @@
         <p>
           On the website, you can sign up for an online consultation or PCR test, participate in scheduled web meetings with your doctor, watch various video tutorials for post-illness prevention, watch the news, read the blog and ask questions. 
         </p>
-        <a class="btn btn-primary" href="#" role="button">Online colsultation</a>
+        <a class="btn btn-primary" href="consultation.php" role="button">Online colsultation</a>
     </div>
 
   </div>

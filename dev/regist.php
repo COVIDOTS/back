@@ -76,8 +76,8 @@
       </header>
       <form method="post" action="regist.php" class="login">
       <section class="mainblock3">
-        <div class="row col-8 reg" style="border: 1px solid white">
-          <h3 style="margin-bottom: 30px !important">Register</h3>
+        <div class="row col-8 reg" style="border: 10px solid white">
+          <h3 style="margin-bottom: 50px !important">Register</h3>
           <div class="two">
             <div class="form-group horizmargin">
               <label for="exampleInputEmail1">Email address</label>

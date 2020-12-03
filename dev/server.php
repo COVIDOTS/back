@@ -47,23 +47,16 @@ if (isset($_POST['reg_user'])) {
       array_push($errors, "User already exists");
     }
   }
-  
-
   echo 'hi';
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-    $password = md5($password_1);//encrypt the password before saving in the database
-    echo 'inserting for you a';
-  	$query = oci_parse($db, "call insertUser('$first_name', '$last_name', '$city', '$contact_number', '$email', '$password', '$profile_image')");
-
+    $password = md5($password);//encrypt the password before saving in the database
+    $query = "INSERT INTO users (USER_UID, FIRST_NAME, LAST_NAME, CITY, CONTACT_NUMBER, EMAIL, PASSWORD, PROFILE_IMAGE)
+            VALUES(user_seq.NEXTVAL, 'Aruzhan', 'serer', 'dfdf', 'sdfsdf', 'sdfsdf','sdfasdf', null)";
     $result = oci_parse($db, $query);
     oci_execute($result, OCI_DEFAULT);
 
     $cquery = "SELECT * FROM users";
-    echo $cquery;
-    $result = oci_parse($db, $cquery);
-    oci_execute($result);
-    oci_fetch_all($result, $cq);
 
     //var_dump($cq);
 

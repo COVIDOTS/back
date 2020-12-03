@@ -37,9 +37,6 @@
         <li class="nav-item">
         <a class="nav-link" href="#">Specialists</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="login.php">Sign in</a>
-      </li>
       </ul>
     </div>
   </header>
