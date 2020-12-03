@@ -188,9 +188,16 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
-.dark {
-	background-image: url(images/back.jpg); 
-	background-repeat: no-repeat;
+.darkimg {
 	background-color: black;
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.form-check {
+	padding: 5px 10px;
 }
 
