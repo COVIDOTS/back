@@ -70,7 +70,7 @@
                 <a class="nav-link" href="covid_centers.php" >COVID help centers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" >Schedule</a>
+                <a class="nav-link" href="schedule.php" >Schedule</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" >Specialists</a>
@@ -80,6 +80,8 @@
               </li>
             </ul>
           </div>
+       </header>
+     </div>
   </head>
   <body style="background-color: #004FA8">
     <div class="container my-5">
@@ -87,7 +89,8 @@
         <div class="col-md-12 text-center">
             <br>
             <br>
-          <h1 class="text-capitalize font-weight-bold" style="color: #ffffff">Your Schedule</h2>
+          <h1 class="text-capitalize font-weight-bold" style="color: #ffffff">My Schedule</h1>
+          <h4 class="text-capitalize font-weight-bold" style="color: #ffffff"><a href = "generalSchedule.php">General Schedule</a></h4>
         </div>
       </div>
       <div class="row mt-sm-5">
