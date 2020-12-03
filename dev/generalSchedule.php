@@ -52,7 +52,7 @@
               <a class="nav-link" href="#">Specialists</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.php">Sign in</a>
+              <a class="nav-link" href="login.php">Sign out</a>
             </li>
           </ul>
         </div>

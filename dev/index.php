@@ -50,11 +50,11 @@
         <div class="insidesch2">
           <div style="margin-left: 20px;">
             <p style="font-size: 12px; margin-bottom: -2px">11:00-11:50</p>
-            <p style="font-size: 14px;">COVID prophylaxy</p> 
+            <p style="font-size: 14px;">Therapy</p> 
           </div>
           <div style="margin-left: 20px;">
             <p style="font-size: 12px;margin-bottom: -2px">11:00-11:50</p>
-            <p style="font-size: 14px;">COVID prophylaxy</p> 
+            <p style="font-size: 14px;">Therapy</p> 
           </div>
 
         </div>
@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div><a href="" style="color: white; margin-left: 200px;">Full schedule</a></div>
+      <div><a href="generalSchedule.php" style="color: white; margin-left: 200px;">Full schedule</a></div>
     </div>
     <div class="row col-4">
       <img src="images/doctor1.jpg">
