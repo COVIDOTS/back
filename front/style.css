@@ -201,3 +201,40 @@
 	padding: 5px 10px;
 }
 
+th {
+	color: var(--dblue);
+	border-color: var(--dblue);
+	width: 120px;
+
+}
+td {
+	width: 120px;
+}
+table {
+	margin:5vh 0vw;
+	margin-bottom: 10vh !important;
+}
+.tabs {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 5vh;
+	align-items: center;
+}
+.tabs a {
+	width: 200px;
+	height: 40px;
+	background-color: white;
+	border: 1px solid var(--dblue);
+	color: var(--dblue;) ;
+	padding: 5px;
+	text-align: center;
+}
+.tabs a:hover {
+	background-image: linear-gradient(45deg, #004FA8, #1A76DC 75%) !important;
+	color: white;
+	text-decoration: none;
+}
+.activetab {
+	background-color: var(--dblue) !important;
+	color: white;
+}
