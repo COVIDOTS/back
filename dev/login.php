@@ -37,10 +37,10 @@
         <a class="nav-link active" href="index.php">Main</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Consultation</a>
+        <a class="nav-link" href="consultation.php">Consultation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">PCR check</a>
+        <a class="nav-link" href="pcr.php">PCR check</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">COVID help centers</a>

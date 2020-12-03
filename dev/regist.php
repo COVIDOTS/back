@@ -57,7 +57,7 @@
               <a class="nav-link" href="consultation.php">Consultation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="consultation.php">PCR check</a>
+              <a class="nav-link" href="pcr.php">PCR check</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">COVID help centers</a>
@@ -75,6 +75,7 @@
         </div>
       </header>
       <form method="post" action="regist.php" class="login">
+  	  <?php include('errors.php'); ?>
       <section class="mainblock3">
         <div class="row col-8 reg" style="border: 10px solid white">
           <h3 style="margin-bottom: 50px !important">Register</h3>
@@ -161,6 +162,7 @@
               <input
                 type="file"
                 class="form-control"
+                class="form-control"
                 name="lob_upload"
                 placeholder="Upload your photo"
                 value="<?php echo $profile_image; ?>"
@@ -168,13 +170,13 @@
             </div>
           </div>
           <div style="margin-top: 30px; display: flex; flex-direction: column;justify-content: center;">
-      <button type="submit" class="btn btn-primary" name="reg_user">Register</button><br>
-      <p class="ltext" style="margin-top: -5px; text-align: center;">Already have account?</p>
-        <a href="login.php" style="font-size: 18px !important">Login to E-CORONA here</a>
-    </div>
+           <button type="submit" class="btn btn-primary" name="reg_user">Register</button><br>
+           <p class="ltext" style="margin-top: -5px; text-align: center;">Already have account?</p>
+           <a href="login.php" style="font-size: 18px !important">Login to E-CORONA here</a>
+          </div>
         </div>
+      </form>
       </section>
-
       <footer class="footer fwhite" style="margin-top: 17vh">
         <div class="row col-4">
           <div class="icondiv">

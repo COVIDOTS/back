@@ -3,20 +3,11 @@ session_start();
 
 // initializing variables
 $user_id = "";
-$email = "";
 $first_name  = "";
 $last_name = "";
 $city = "";
 $contact_number = "";
-$profile_image = "";
-$password = "";
-
-//consultation
-$age = "";
-$phone = "";
-$consultation_date = "";
-$first_nameCN = "";
-$last_nameCN = "";
+$email = "";
 $errors = array(); 
 
 // connect to the database
@@ -25,24 +16,27 @@ $db =  oci_connect("ecoron", "qwerty123", "//localhost/orcl");
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
+  $user_id = $_POST['user_id'];
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $city = $_POST['city'];
   $contact_number = $_POST['contact_number'];
   $email = $_POST['email'];
-  $profile_image = $_POST['profile_image'];
-  $password = $_POST['password'];
+  $password_1 = $_POST['password_1'];
+  $password_2 = $_POST['password_2'];
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($contact_number)) { array_push($city, "City is required"); }
-  if (empty($password)) { array_push($errors, "Password is required"); }
-
+  if (empty($city)) { array_push($city, "City is required"); }
+  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if ($password_1 != $password_2) {
+	array_push($errors, "The two passwords do not match");
+  }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT DISTINCT email FROM users WHERE email='$email'";
+  $user_check_query = "SELECT DISTINCT email FROM users WHERE user_id='$user_id'";
   //echo $user_check_query;
   $result = oci_parse($db, $user_check_query);
   oci_execute($result);
@@ -55,12 +49,13 @@ if (isset($_POST['reg_user'])) {
       array_push($errors, "User already exists");
     }
   }
+
   echo 'hi';
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-    $passwordEnc = md5($password);//encrypt the password before saving in the database
-    // insert user into users table
-    $query = oci_parse($db, "call insertUser(10184, 'Aruzhan', 'Sarsenbek','Nur-Sultan', '87783120332','rnserikbaevaa@gmail.com', 'Hello', null)");
+  	$password = md5($password_1);//encrypt the password before saving in the database
+    echo 'inserting for you a';
+  	$query = oci_parse($db, "call insertUser(10173, 'Aruzhan', 'Serikbayeva','Nur-Sultan', '87783120332','180107217@stu.sdu.edu.kz', 'Hello', null)");
 
     $result = oci_parse($db, $query);
     oci_execute($result, OCI_DEFAULT);
@@ -86,33 +81,33 @@ if (isset($_POST['reg_user'])) {
 if (isset($_POST['login_user'])) {
     $email =  $_POST['email'];
     $password =  $_POST['password'];
-  
+
     if (empty($email)) {
-        array_push($errors, "Email is required");
+        array_push($errors, "Username is required");
     }
     if (empty($password)) {
         array_push($errors, "Password is required");
     }
 
     if (count($errors) == 0) {
-        $new_password = md5($password);
-        $query = "SELECT COUNT(*) FROM users WHERE email='$email'AND password='$password'";
-        
+        $password = md5($password);
+        $query = "SELECT COUNT(*) FROM users WHERE email='$email' AND password='$password'";
+
         $results = oci_parse($db, $query);
         oci_execute($results);
         oci_fetch_all($results, $results);
 
         //var_dump($results);
-        // echo $results['COUNT(*)'][0];
+        echo $results['COUNT(*)'][0];
 
         if ($results['COUNT(*)'][0] == 1) {
           $_SESSION['email'] = $email;
           $_SESSION['success'] = "You are now logged in";
-          header('location: index2.php');
+          header('location: index.php');
         }else {
-            array_push($errors, "Wrong email/password combination");
+            array_push($errors, "Wrong username/password combination");
         }
     }
   }
   oci_close($db);
-  ?>
+  ?> 

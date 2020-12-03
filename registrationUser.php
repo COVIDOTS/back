@@ -12,7 +12,7 @@
 				$conn = oci_connect("ecoron", "qwerty123", "//localhost/orcl");
 
 				// new customer data received from newCustomer.php
-				$ = $_POST['signupFirstName'];
+				$signupFirstName = $_POST['signupFirstName'];
 				$signupLName = $_POST['signupLastName'];
 				$signupEmail = $_POST['signupEmail'];
 				$signupEmailagain = $_POST['signupEmailagain'];
