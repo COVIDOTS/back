@@ -48,7 +48,7 @@
         <a class="nav-link" href="#">COVID help centers</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="#">Schedule</a>
+        <a class="nav-link" href="schedule.php">Schedule</a>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="#">Specialists</a>
@@ -98,44 +98,44 @@
       <div class="two">
         <div class="form-group horizmargin">
           <label for="exampleFormControlSelect1">City</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="exampleFormControlSelect1" name="cityOption">
             <option></option>
-            <option value="327">Almaty</option>
-            <option value="7172">Nur-Sultan</option>
-            <option value="325">Shymkent</option>
-            <option value="321">Qaragandy</option>
-            <option value="311">Uralsk</option>
+            <option value="Almaty">Almaty</option>
+            <option value="Nur-Sultan">Nur-Sultan</option>
+            <option value="Shymkent">Shymkent</option>
+            <option value="Qaragandy">Qaragandy</option>
+            <option value="Uralsk">Uralsk</option>
           </select>
         </div>
         <div class="form-group horizmargin">
           <label for="exampleFormControlSelect1">Clinics</label>
-          <select class="form-control" id="exampleFormControlSelect1" name="medicalCenters[]">
+          <select class="form-control" id="exampleFormControlSelect1" name="medicalOption">
             <option></option>
-            <option value="emir">EMIRMED Medical Center</option>
-            <option value="alg">Medical Center "ALGAMED"</option>
-            <option value="mole">Institute of Molecular Medicine</option>
-            <option value="clin">Central Family Clinic of Almaty</option>
-            <option value="sana">SANA Medical Center</option>
-            <option value="poly">City polyclinic No. 16</option>
-            <option value="taus">TAU SUNKAR Medical Center in Mamyr</option>
-            <option value="alte">ALTERNA-L Medical Scientific Center</option>
-            <option value="medi">MEDLIVE Clinic</option>
-            <option value="alta">ALTA Medical Center</option>
-            <option value="mpkc">MPK CLINIC Korean Medical Center</option>
-            <option value="asar">ASAR MEDICUS Medical Center on Brusilovskoye</option>
-            <option value="medi">MEDLIVE clinics</option>
-            <option value="ci18">City polyclinic No. 10</option>
-            <option value="aids">Centre for AIDS Prevention and Control Nur-Sultan</option>
-            <option value="ayam">Aya Medical Centre in Koshkarbayeva</option>
-            <option value="alle">Regional Allergic Centre DIVERA</option>
-            <option value="kris">KRISTINA Clinic</option>
-            <option value="krgr">Karaganda Regional Centre for AIDS Prevention and Control</option>
-            <option value="regi">Karaganda Regional Infectious Disease Hospital</option>
-            <option value="hos1">City Hospital No. 1</option>
-            <option value="san1">SANAD Clinical and Diagnostic Rehabilitation Centre</option>
-            <option value="17bl">Medical centre on 17 Builders Ave.</option>
-            <option value="vene">Karaganda Regional Skin and Venereology Dispensary</option>
-            <option value="hipp">HIPPOCRATE Polyclinic</option>
+            <option value="EMIRMED Medical Center">EMIRMED Medical Center</option>
+            <option value="Medical Center ALGAMED">Medical Center "ALGAMED</option>
+            <option value="Institute of Molecular Medicine">Institute of Molecular Medicine</option>
+            <option value="Central Family Clinic of Almaty">Central Family Clinic of Almaty</option>
+            <option value="SANA Medical Center">SANA Medical Center</option>
+            <option value="City polyclinic No. 16">City polyclinic No. 16</option>
+            <option value="TAU SUNKAR Medical Center in Mamyr">TAU SUNKAR Medical Center in Mamyr</option>
+            <option value="ALTERNA-L Medical Scientific Center">ALTERNA-L Medical Scientific Center</option>
+            <option value="MEDLIVE Clinic">MEDLIVE Clinic</option>
+            <option value="ALTA Medical Center">ALTA Medical Center</option>
+            <option value="MPK CLINIC Korean Medical Center">MPK CLINIC Korean Medical Center</option>
+            <option value="ASAR MEDICUS Medical Center on Brusilovskoye">ASAR MEDICUS Medical Center on Brusilovskoye</option>
+            <option value="MEDLIVE clinics">MEDLIVE clinics</option>
+            <option value="City polyclinic No. 10">City polyclinic No. 10</option>
+            <option value="Centre for AIDS Prevention and Control Nur-Sultan">Centre for AIDS Prevention and Control Nur-Sultan</option>
+            <option value="Aya Medical Centre in Koshkarbayeva">Aya Medical Centre in Koshkarbayeva</option>
+            <option value="Regional Allergic Centre DIVERA">Regional Allergic Centre DIVERA</option>
+            <option value="KRISTINA Clinic">KRISTINA Clinic</option>
+            <option value="Karaganda Regional Centre for AIDS Prevention and Control">Karaganda Regional Centre for AIDS Prevention and Control</option>
+            <option value="Karaganda Regional Infectious Disease Hospital">Karaganda Regional Infectious Disease Hospital</option>
+            <option value="City Hospital No. 1">City Hospital No. 1</option>
+            <option value="SANAD Clinical and Diagnostic Rehabilitation Centre">SANAD Clinical and Diagnostic Rehabilitation Centre</option>
+            <option value="Medical centre on 17 Builders Ave.">Medical centre on 17 Builders Ave.</option>
+            <option value="Karaganda Regional Skin and Venereology Dispensary">Karaganda Regional Skin and Venereology Dispensary</option>
+            <option value="HIPPOCRATE Polyclinic">HIPPOCRATE Polyclinic</option>
           </select>
         </div>
     </div>
@@ -143,32 +143,32 @@
     <div class="two">
         <div class="form-group horizmargin">
           <label for="exampleFormControlSelect1">Doctor</label>
-          <select class="form-control" id="exampleFormControlSelect1" name="doctors[]">
+          <select class="form-control" id="exampleFormControlSelect1" name="doctorOption">
             <option></option>
-            <option value='asr'>Amanbekova Sania Razakbaevna</option>
-            <option value='ahk'>Amirova Halia Kulumbekovna</option>
-            <option value='miv'>Maltseva Inna Vladimirovna</option>
-            <option value='pev'>Ponomaryova Elena Viktorovna</option>
-            <option value='mle'>Makhanbetova Lyazzat Erdalyevna</option>
-            <option value='ast'>Abdurasheva S.T.</option>
-            <option value='sea'>Slavko Elena Alekseevna</option>
-            <option value='ssk'>Shagmanova Saule Kagigalievna</option>
-            <option value='gmv'>Golovenko Marina Valerievna</option>
-            <option value='eae'>Erkinbai Aliya Erkinbaikyzy</option>
-            <option value='afk'>Abildaeva Farida Kurmanalievna</option>
-            <option value='ldd'>Lidia Deryabina</option>
-            <option value='slb'>Seidulaeva Lisa Baishevna</option>
-            <option value='znv'>Zubova Natalya Viktorovna</option>
-            <option value='bkk'>Biysheva Karlygash Kadyrovna</option>
-            <option value='tkt'>Tairova Karima Tashkanovna</option>
-            <option value='aza'>Auelbaev Zhaksybek Andabekovich</option>
-            <option value='asr'>Amanbekova Sania Razakbaevna</option>
-            <option value='ahk'>Amirova Halia Kulumbekovna</option>
-            <option value='nah'>Nursaule Alipkalievna Hasenova</option>
-            <option value='agk'>Abdrakhmanova Gulstan Katybaevna</option>
-            <option value='ksm'>Kuljanova Saule Muratbekovna</option>
-            <option value='uis'>Umida Ismatulaevna Sultanova</option>
-            <option value='dkg'>Devdariani Khatuna Georgievna</option>
+            <option value='Amanbekova Sania Razakbaevna'>Amanbekova Sania Razakbaevna</option>
+            <option value='Amirova Halia Kulumbekovna'>Amirova Halia Kulumbekovna</option>
+            <option value='Maltseva Inna Vladimirovna'>Maltseva Inna Vladimirovna</option>
+            <option value='Ponomaryova Elena Viktorovna'>Ponomaryova Elena Viktorovna</option>
+            <option value='Makhanbetova Lyazzat Erdalyevna'>Makhanbetova Lyazzat Erdalyevna</option>
+            <option value='Abdurasheva S.T.'>Abdurasheva S.T.</option>
+            <option value='Slavko Elena Alekseevna'>Slavko Elena Alekseevna</option>
+            <option value='Shagmanova Saule Kagigalievna'>Shagmanova Saule Kagigalievna</option>
+            <option value='Golovenko Marina Valerievna'>Golovenko Marina Valerievna</option>
+            <option value='Erkinbai Aliya Erkinbaikyzy'>Erkinbai Aliya Erkinbaikyzy</option>
+            <option value='Abildaeva Farida Kurmanalievna'>Abildaeva Farida Kurmanalievna</option>
+            <option value='Lidia Deryabina'>Lidia Deryabina</option>
+            <option value='Seidulaeva Lisa Baishevna'>Seidulaeva Lisa Baishevna</option>
+            <option value='Zubova Natalya Viktorovna'>Zubova Natalya Viktorovna</option>
+            <option value='Biysheva Karlygash Kadyrovna'>Biysheva Karlygash Kadyrovna</option>
+            <option value='Tairova Karima Tashkanovna'>Tairova Karima Tashkanovna</option>
+            <option value='Auelbaev Zhaksybek Andabekovich'>Auelbaev Zhaksybek Andabekovich</option>
+            <option value='Amanbekova Sania Razakbaevna'>Amanbekova Sania Razakbaevna</option>
+            <option value='Amirova Halia Kulumbekovna'>Amirova Halia Kulumbekovna</option>
+            <option value='Nursaule Alipkalievna Hasenova'>Nursaule Alipkalievna Hasenova</option>
+            <option value='Abdrakhmanova Gulstan Katybaevna'>Abdrakhmanova Gulstan Katybaevna</option>
+            <option value='Kuljanova Saule Muratbekovna'>Kuljanova Saule Muratbekovna</option>
+            <option value='Umida Ismatulaevna Sultanova'>Umida Ismatulaevna Sultanova</option>
+            <option value='Devdariani Khatuna Georgievna'>Devdariani Khatuna Georgievna</option>
           </select>
         </div>
         <div class="form-group horizmargin">

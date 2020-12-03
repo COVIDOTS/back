@@ -30,7 +30,7 @@
         <a class="nav-link" href="#">COVID help centers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Schedule</a>
+        <a class="nav-link" href="schedule.php">Schedule</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Specialists</a>
