@@ -172,8 +172,24 @@
           </select>
         </div>
         <div class="form-group horizmargin">
-          <label for="exampleFormControlSelect1">Date</label>
-          <input class="form-control" type="date" id="consultation_date" name="consultation_date" aria-label="Search" value="<?php echo $consultation_date; ?>">
+          <label for="exampleFormControlSelect1">Date&Time</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="dateTimeOption">
+            <option></option>
+            <option value="7 December 14:00">7 December 14:00</option>
+            <option value="7 December 17:00">7 December 17:00</option>
+            <option value="7 December 19:00">7 December 19:00</option>
+            <option value="8 December 9:00">8 December 9:00</option>
+            <option value="8 December 11:00">8 December 11:00</option>
+            <option value="8 December 12:00">8 December 12:00</option>
+            <option value="8 December 14:00">8 December 14:00</option>
+            <option value="8 December 15:00">8 December 15:00</option>
+            <option value="8 December 17:00">8 December 17:00</option>
+            <option value="8 December 19:00">8 December 19:00</option>
+            <option value="9 December 11:00">9 December 11:00</option>
+            <option value="9 December 14:00">9 December 14:00</option>
+            <option value="9 December 15:00">9 December 15:00</option>
+            <option value="9 December 16:00">9 December 16:00</option>
+          </select>
         </div>
     </div>
     <div style="margin-top: 30px; display: flex; flex-direction: column;justify-content: center;">

@@ -8,6 +8,7 @@ $last_nameCN = "";
 $cityOption = isset($_POST['cityOption']) ? $_POST['cityOption'] : false;
 $medicalOption = isset($_POST['medicalOption']) ? $_POST['medicalOption'] : false;
 $doctorOption = isset($_POST['doctorOption']) ? $_POST['doctorOption'] : false;
+$dateTimeOption = isset($_POST['dateTimeOption']) ? $_POST['dateTimeOption'] : false;
 // $consultation_date = "";
 $errors = array(); 
 
@@ -21,7 +22,6 @@ if (isset($_POST['submit_consultation'])) {
     $last_nameCN = $_POST['last_nameCN'];
     $age = $_POST['age'];
     $phone = $_POST['phone'];
-    $consultation_date = $_POST['consultation_date'];
     if ($cityOption) {
         $city = htmlentities($_POST['cityOption'], ENT_QUOTES, "UTF-8");}
     else {
@@ -37,7 +37,11 @@ if (isset($_POST['submit_consultation'])) {
     else {
         echo "task option is required";
     }
-
+    if ($dateTimeOption) {
+        $consultation_date = htmlentities($_POST['dateTimeOption'], ENT_QUOTES, "UTF-8");}
+    else {
+        echo "task option is required";
+    }
     
     if (empty($phone)) {
         array_push($errors, "Phone is required!");
@@ -46,7 +50,7 @@ if (isset($_POST['submit_consultation'])) {
         array_push($errors, "Age is required!");
     }
     if (count($errors) == 0) {
-        $stid = oci_parse($conn, 'INSERT INTO online_consultation (first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(:first_name, :last_name, :age, :phone, :city, :doctor,:clinics, sysdate)');
+        $stid = oci_parse($conn, 'INSERT INTO online_consultation (first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(:first_name, :last_name, :age, :phone, :city, :doctor,:clinics, :consultation_date)');
 
         oci_bind_by_name($stid, ':first_name', $first_nameCN);
         oci_bind_by_name($stid, ':last_name', $last_nameCN);
@@ -55,7 +59,7 @@ if (isset($_POST['submit_consultation'])) {
         oci_bind_by_name($stid, ':city', $city);
         oci_bind_by_name($stid, ':doctor', $doctor);
         oci_bind_by_name($stid, ':clinics', $clinics);
-        //  oci_bind_by_name($stid, ':consultation_date', $consultation_date);
+        oci_bind_by_name($stid, ':consultation_date', $consultation_date);
 
         $r = oci_execute($stid);  // executes and commits
 

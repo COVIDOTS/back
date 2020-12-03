@@ -1,3 +1,45 @@
+<?php 
+  session_start();
+
+  if (!isset($_SESSION['email'])) {
+	  $_SESSION['msg'] = "You must log in first";
+	  $_SESSION['user_id'] = 'None';
+  }
+  if (!isset($_SESSION['user_id'])) {
+	$_SESSION['user_id'] = "None";
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['email']);
+	$_SESSION['user_id'] = 'None';
+	header("location: login.php");
+  }
+?>
+
+<?php
+
+  $conn = oci_connect('ecoron', 'qwerty123', 'localhost/orcl');
+  if (!$conn) {
+    $e = oci_error();
+    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+  }
+
+  $sql_query = "SELECT first_name,last_name,city,doctor,clinics,consultation_date  from online_consultation"; // something
+
+  $result = oci_parse($conn, $sql_query);
+
+  oci_define_by_name($result, 'FIRST_NAME', $first_nameCN);
+  oci_define_by_name($result, 'LAST_NAME', $last_nameCN);
+  oci_define_by_name($result, 'CITY', $city);
+  oci_define_by_name($result, 'DOCTOR', $doctor);
+  oci_define_by_name($result, 'CLINICS', $clinics);
+  oci_define_by_name($result, 'CONSULTATION_DATE', $consultation_date);
+
+  oci_execute($result);
+
+  oci_free_statement($result);  
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,7 +67,7 @@
                 <a class="nav-link" href="pcr.php" >PCR check</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" >COVID help centers</a>
+                <a class="nav-link" href="covid_centers.php" >COVID help centers</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" >Schedule</a>
@@ -55,12 +97,7 @@
               class="d-flex justify-content-between align-items-center mx-auto"
             >
               <div>
-                <h2 class="font-weight-bold" style="margin-top: -30px">8:20</h2>
-                <small
-                  class="d-block text-center"
-                  style="line-height: 0; color: #5d7de5"
-                  >AM</small
-                >
+                <h2 class="font-weight-bold" style="margin-top: -30px" > 9 December 15:00<?php echo $consultation_date;?></h2>
               </div>
               <p class="text-center">
                 <svg
@@ -83,13 +120,12 @@
             c36.341,0,65.801,29.461,65.801,65.801C226.742,152.834,197.282,182.294,160.941,182.294z"
                   />
                 </svg>
-                <small class="d-block font-weight-normal">Kabul, AFG</small>
+                <small class="d-block font-weight-normal">Almaty<?php echo $city;?></small>
               </p>
             </div>
             <div class="my-2">
               <p class="text-secondary" style="line-height: 2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-                ipsum dolor sit amet.
+              ASAR MEDICUS Medical Center on Brusilovskoye<?php echo $clinics;?>
               </p>
               <div class="d-flex align-items-center">
                 <span
@@ -97,7 +133,7 @@
                   style="width: 15px; height: 15px; background-color: #5d7de5"
                 >
                 </span>
-                <small class="ml-1 text-secondary">Coming Soon</small>
+                <small class="ml-1 text-secondary">Consulting</small>
               </div>
             </div>
           </div>
@@ -108,12 +144,7 @@
               class="d-flex justify-content-between align-items-center mx-auto"
             >
               <div>
-                <h2 class="font-weight-bold" style="margin-top: -30px">9:20</h2>
-                <small
-                  class="d-block text-center"
-                  style="line-height: 0; color: #5d7de5"
-                  >AM</small
-                >
+                <h2 class="font-weight-bold" style="margin-top: -30px">10 December 11:00<?php echo $consultation_date;?></h2>
               </div>
               <p class="text-center">
                 <svg
@@ -136,21 +167,20 @@
             c36.341,0,65.801,29.461,65.801,65.801C226.742,152.834,197.282,182.294,160.941,182.294z"
                   />
                 </svg>
-                <small class="d-block font-weight-normal">Kabul, AFG</small>
+                <small class="d-block font-weight-normal">Almaty<?php echo $city;?></small>
               </p>
             </div>
             <div class="my-2">
               <p class="text-secondary" style="line-height: 2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-                ipsum dolor sit amet.
+              MEDIKER Zhaiyk<?php echo $clinics;?>
               </p>
               <div class="d-flex align-items-center">
                 <span
                   class="d-inline-block rounded-circle"
-                  style="width: 15px; height: 15px; background-color: #5d7de5"
+                  style="width: 15px; height: 15px; background-color: #000000"
                 >
                 </span>
-                <small class="ml-1 text-secondary">Coming Soon</small>
+                <small class="ml-1 text-secondary">PCR</small>
               </div>
             </div>
           </div>
@@ -173,4 +203,4 @@
   </footer>
     </div>
   </body>
-</html>
+  </html>

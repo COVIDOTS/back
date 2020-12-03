@@ -60,7 +60,7 @@
               <a class="nav-link" href="pcr.php">PCR check</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">COVID help centers</a>
+              <a class="nav-link" href="covid_centers.php">COVID help centers</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Schedule</a>
