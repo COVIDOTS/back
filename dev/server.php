@@ -2,11 +2,13 @@
 session_start();
 
 // initializing variables
+$email = "";
 $first_name  = "";
 $last_name = "";
 $city = "";
 $contact_number = "";
-$email = "";
+$profile_image = "";
+$password = "";
 $errors = array(); 
 
 // connect to the database
@@ -20,21 +22,19 @@ if (isset($_POST['reg_user'])) {
   $city = $_POST['city'];
   $contact_number = $_POST['contact_number'];
   $email = $_POST['email'];
-  $password_1 = $_POST['password_1'];
-  $password_2 = $_POST['password_2'];
+  $profile_image = $_POST['profile_image'];
+  $password = $_POST['password'];
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($city)) { array_push($city, "City is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
-  if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
-  }
+  if (empty($contact_number)) { array_push($city, "City is required"); }
+  if (empty($password)) { array_push($errors, "Password is required"); }
+
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT DISTINCT email FROM users WHERE user_id='$user_id'";
+  $user_check_query = "SELECT DISTINCT email FROM users WHERE email='$email'";
   //echo $user_check_query;
   $result = oci_parse($db, $user_check_query);
   oci_execute($result);
@@ -47,13 +47,14 @@ if (isset($_POST['reg_user'])) {
       array_push($errors, "User already exists");
     }
   }
+  
 
   echo 'hi';
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
     echo 'inserting for you a';
-  	$query = oci_parse($db, "call insertUser(user_seq.NEXTVAL, '$first_name', '$last_name', '$city', '$contact_number', '$email', '$password')");
+  	$query = oci_parse($db, "call insertUser('$first_name', '$last_name', '$city', '$contact_number', '$email', '$password', '$profile_image')");
 
     $result = oci_parse($db, $query);
     oci_execute($result, OCI_DEFAULT);

@@ -52,7 +52,7 @@
         <a class="nav-link" href="#">Specialists</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Sign in</a>
+        <a class="nav-link" href="login.php">Sign in</a>
       </li>
       </ul>
     </div>
@@ -78,7 +78,7 @@
         <button type="submit" class="btn btn-primary btnwhite" name="login_user">Login</button>
       </form>
       <p class="ltext">Don’t have an account?</p>
-      <a href="" style="color: white;font-size: 18px !important">Register to E-CORONA here</a>
+      <a href="regist.php" style="color: white;font-size: 18px !important">Register to E-CORONA here</a>
       <p></p>
     </div>
     
