@@ -30,5 +30,3 @@ while (oci_fetch($result)) {
 
 oci_free_statement($result);
 oci_close($conn);
-
-?>
