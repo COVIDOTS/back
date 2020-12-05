@@ -2,83 +2,61 @@
 session_start();
 
 // initializing variables
-$user_id = "";
 $email = "";
 $first_name  = "";
 $last_name = "";
 $city = "";
 $contact_number = "";
-$profile_image = "";
 $password = "";
+$user_uid = "user_seq.NEXTVAL";
+$profile_image = null;
 
-//consultation
-$age = "";
-$phone = "";
-$consultation_date = "";
-$first_nameCN = "";
-$last_nameCN = "";
 $errors = array(); 
 
 // connect to the database
 $db =  oci_connect("ecoron", "qwerty123", "//localhost/orcl");
 
+if (!$db) {
+  $e = oci_error();
+  trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+}
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
+  // $user_uid = "user_seq.NEXTVAL";
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $city = $_POST['city'];
   $contact_number = $_POST['contact_number'];
   $email = $_POST['email'];
-  $profile_image = $_POST['profile_image'];
   $password = $_POST['password'];
+  $profile_image = null;
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($contact_number)) { array_push($city, "City is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
-
-
-  // first check the database to make sure 
-  // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT DISTINCT email FROM users WHERE email='$email'";
-  //echo $user_check_query;
-  $result = oci_parse($db, $user_check_query);
-  oci_execute($result);
-  oci_fetch_all($result, $user);
-
-  var_dump($user);
-
-  if ($user) { // if user exists
-    if ($user['email'][0] === $email) {
-      array_push($errors, "User already exists");
-    }
-  }
-  echo 'hi';
-  // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-    $passwordEnc = md5($password);//encrypt the password before saving in the database
-    // insert user into users table
-    $query = oci_parse($db, "call insertUser(10184, 'Aruzhan', 'Sarsenbek','Nur-Sultan', '87783120332','rnserikbaevaa@gmail.com', 'Hello', null)");
+    $stid = oci_parse($db, 'INSERT INTO eco_users (user_uid,first_name, last_name, city, contact_number, email, password, profile_image) VALUES(user_seq.NEXTVAL,:first_name, :last_name, :city, :contact_number, :email, :password, :profile_image)');
+    
 
-    $result = oci_parse($db, $query);
-    oci_execute($result, OCI_DEFAULT);
+    // oci_bind_by_name($stid, ':user_uid', $user_uid);
+    oci_bind_by_name($stid, ':first_name', $first_name);
+    oci_bind_by_name($stid, ':last_name', $last_name);
+    oci_bind_by_name($stid, ':city', $city);
+    oci_bind_by_name($stid, ':contact_number', $contact_number);
+    oci_bind_by_name($stid, ':email', $email);
+    oci_bind_by_name($stid, ':password', $password);
+    oci_bind_by_name($stid, ':profile_image', $profile_image);
 
-    $cquery = "SELECT * FROM users";
-    echo $cquery;
-    $result = oci_parse($db, $cquery);
-    oci_execute($result);
-    oci_fetch_all($result, $cq);
+    $r = oci_execute($stid);  // executes and commits
 
-    //var_dump($cq);
-
-  	$_SESSION['email'] = $email;
-  	$_SESSION['success'] = "Congratulations! You have registered";
-  	header('location: index.php'); //here we go to the main page
+    if ($r) {
+      header('location: registration_completed.php');
   }
-  else{
-    echo 'sxff';
+
+  oci_free_statement($stid);
   }
 }
 

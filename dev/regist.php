@@ -97,7 +97,7 @@
             <div class="form-group horizmargin">
               <label for="exampleInputEmail1">First name</label>
               <input
-                type="first_name"
+                type="search"
                 class="form-control"
                 id="exampleInputEmail1"
                 name="first_name"
@@ -109,7 +109,7 @@
             <div class="form-group horizmargin">
               <label for="exampleInputPassword1">Last name</label>
               <input
-                type="last_name"
+                type="search"
                 class="form-control"
                 id="exampleInputPassword1"
                 name="last_name"
@@ -122,7 +122,7 @@
             <div class="form-group horizmargin">
               <label for="exampleInputEmail1">City</label>
               <input
-                type="city"
+                type="search"
                 class="form-control"
                 id="exampleInputEmail1"
                 name="city"
@@ -165,7 +165,6 @@
                 class="form-control"
                 name="lob_upload"
                 placeholder="Upload your photo"
-                value="<?php echo $profile_image; ?>"
               />
             </div>
           </div>

@@ -23,6 +23,14 @@ $dateTimeOptionPR = isset($_POST['dateTimeOptionPR']) ? $_POST['dateTimeOptionPR
 $errors = array(); 
 
 $conn = oci_connect('ecoron', 'qwerty123', 'localhost/orcl');
+
+$sql = 'select user_uid from eco_users where user_uid = (select MAX(user_uid) from eco_users)';
+$stdin = oci_parse($conn, $sql);
+oci_execute($stdin);
+while (($row = oci_fetch_array($stdin, OCI_ASSOC)) != false) {
+    $user_uid =  $row['USER_UID'];
+}
+
 if (!$conn) {
     $e = oci_error();
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
@@ -53,6 +61,7 @@ if (isset($_POST['submit_consultation'])) {
         echo "task option is required";
     }
     
+    
     if (empty($phone)) {
         array_push($errors, "Phone is required!");
     }
@@ -61,8 +70,9 @@ if (isset($_POST['submit_consultation'])) {
     }
     if (count($errors) == 0) {
         //Altynay tut sql
-        $stid = oci_parse($conn, 'INSERT INTO online_consultation (first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(:first_name, :last_name, :age, :phone, :city, :doctor,:clinics, :consultation_date)');
+        $stid = oci_parse($conn, "INSERT INTO online_consultation (consultation_id, user_uid , doctor_id, first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(cons_seq.NEXTVAL, :user_uid, 10001, :first_name, :last_name, :age, :phone, :city, :doctor,:clinics, :consultation_date)");
 
+        oci_bind_by_name($stid, ':user_uid', $user_uid);
         oci_bind_by_name($stid, ':first_name', $first_nameCN);
         oci_bind_by_name($stid, ':last_name', $last_nameCN);
         oci_bind_by_name($stid, ':age', $age);
