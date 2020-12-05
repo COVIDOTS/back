@@ -116,8 +116,9 @@ if (isset($_POST['submit_pcr'])) {
         array_push($errors, "Phone is required!");
     }
     if (count($errors) == 0) {
-        $stid = oci_parse($conn, 'INSERT INTO online_pcr (first_name, last_name,  phone, city, punkt, pcr_date) VALUES(:first_name, :last_name, :phone,  :city, :punkt,:pcr_date)');
+        $stid = oci_parse($conn, 'INSERT INTO online_pcr (pcr_id, center_id, user_uid, first_name, last_name,  phone, city, punkt, pcr_date) VALUES( pcr_seq.NEXTVAL,5041, :user_uid, :first_name, :last_name, :phone,  :city, :punkt,:pcr_date)');
 
+        oci_bind_by_name($stid, ':user_uid', $user_uid);
         oci_bind_by_name($stid, ':first_name', $first_namePR);
         oci_bind_by_name($stid, ':last_name', $last_namePR);
         oci_bind_by_name($stid, ':phone', $phonePR);
