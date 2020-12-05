@@ -114,5 +114,3 @@ if (isset($_POST['login_user'])) {
         }
     }
   }
-  oci_close($db);
-  ?>

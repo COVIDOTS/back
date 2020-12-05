@@ -1,3 +1,4 @@
+<?php include('con_server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,38 +36,32 @@
         <a class="nav-link" href="schedule.php">Schedule</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Specialists</a>
+        <a class="nav-link" href="doctors.php">Specialists</a>
       </li>
       </ul>
     </div>
   </header>
-
+  <form method="post" action="pcr.php" class="login">
   <section class="mainblock3">
     <div class="row col-8 reg" style="border: 1px solid white;">
       <div class="horizmargin">
-        <h3 style="margin-bottom: 30px !important;">Check with the PCR analysis test</h3>
+        <h3 style="margin-bottom: 30px !important;">Check your health with us!</h3>
         <h6 style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #004FA8">Personal information</h6>
       </div>
       <div class="two">
       <div class="form-group horizmargin">
           <label for="exampleInputEmail1">First name</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name">
+          <input type="search" class="form-control"  name="first_namePR" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name" aria-label="Search" value="<?php echo $first_namePR; ?>">
       </div>
       <div class="form-group horizmargin">
           <label for="exampleInputPassword1">Last name</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter last name">
+          <input type="search" class="form-control" name="last_namePR" id="exampleInputPassword1" placeholder="Enter last name" aria-label="Search" value="<?php echo $last_namePR; ?>">
       </div>
     </div>
-      <div class="two">
       <div class="form-group horizmargin">
-          <label for="exampleInputPassword1">Login</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter login">
+          <label for="exampleInputEmail1" style='margin-left: 110px;'>Phone number</label>
+          <input type="search" class="form-control" name="phonePR" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your phone number" aria-label="Search" value="<?php echo $phonePR; ?>">
       </div>
-      <div class="form-group horizmargin">
-          <label for="exampleInputEmail1">Phone number</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your phone number">
-      </div>
-    </div>
     <div class="horizmargin" style="margin-top: 30px;">
         <h6 style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #004FA8">Register details</h6>
         <div style="display: flex;flex-direction: row; justify-content: space-between;">
@@ -82,48 +77,65 @@
       <div class="two">
         <div class="form-group horizmargin">
           <label for="exampleFormControlSelect1">City</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>-</option>
-            <option>Almaty</option>
-            <option>Nur-Sultan</option>
-            <option>Shymkent</option>
-            <option>Qaragandy</option>
-            <option>Uralsk</option>
+          <select class="form-control" id="exampleFormControlSelect1" name="cityOptionPR">
+            <option></option>
+            <option value="Almaty">Almaty</option>
+            <option value="Nur-Sultan">Nur-Sultan</option>
+            <option value="Shymkent">Shymkent</option>
+            <option value="Qaragandy">Qaragandy</option>
+            <option value="Uralsk">Uralsk</option>
           </select>
         </div>
         <div class="form-group horizmargin">
-          <label for="exampleFormControlSelect1">Center name</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>-</option>
-            <option>PCV "National Center of Expertise"</option>
-            <option>Medical Partners Korea Clinic LLP</option>
-            <option>Medicare LLP</option>
-            <option>Invivo LLP</option>
-            <option>Olympus" LLP</option>
-            <option>PCV "National Center of Expertise"</option>
-            <option>Pediatric Cardiac Surgery of the National Scientific Medical Center</option>
-            <option>Laboratory at City Hospital No. 2</option>
-            <option>MEDIKER network of medical centers</option>
-            <option>MEDIKER Zhaiyk</option>
+          <label for="exampleFormControlSelect1">Center</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="punktPCR">
+            <option></option>
+            <option value="PCV 'National Center of Expertise'">PCV "National Center of Expertise"</option>
+            <option value="Medical Partners Korea Clinic LLP">Medical Partners Korea Clinic LLP</option>
+            <option value="Medicare LLP">Medicare LLP</option>
+            <option value="Invivo LLP">Invivo LLP</option>
+            <option value="Olympus 'LLP'">Olympus" LLP</option>
+            <option value="PCV 'National Center of Expertise'">PCV "National Center of Expertise"</option>
+            <option value="Pediatric Cardiac Surgery of the National Scientific Medical Center">Pediatric Cardiac Surgery of the National Scientific Medical Center</option>
+            <option value="Laboratory at City Hospital No. 2">Laboratory at City Hospital No. 2</option>
+            <option value="MEDIKER network of medical centers">MEDIKER network of medical centers</option>
+            <option value="MEDIKER Zhaiyk">MEDIKER Zhaiyk</option>
           </select>
         </div>
     </div>
 
     <div class="two">
         
-        <div class="form-group horizmargin">
-          <label for="exampleFormControlSelect1">Date</label>
-          <input class="form-control" type="date" id="consultation_date" name="consultation_date">
+    <div class="form-group horizmargin">
+          <label for="exampleFormControlSelect1">Date&Time</label >
+          <select class="form-control" id="exampleFormControlSelect1" name="dateTimeOptionPR">
+            <option></option>
+            <option value="10 December 14:00">7 December 14:00</option>
+            <option value="10 December 17:00">7 December 17:00</option>
+            <option value="10 December 19:00">7 December 19:00</option>
+            <option value="11 December 9:00">11 December 9:00</option>
+            <option value="11 December 11:00">11 December 11:00</option>
+            <option value="11 December 12:00">11 December 12:00</option>
+            <option value="11 December 14:00">11 December 14:00</option>
+            <option value="11 December 15:00">11 December 15:00</option>
+            <option value="11 December 17:00">11 December 17:00</option>
+            <option value="11 December 19:00">11 December 19:00</option>
+            <option value="12 December 11:00">12 December 11:00</option>
+            <option value="12 December 14:00">12 December 14:00</option>
+            <option value="12 December 15:00">12 December 15:00</option>
+            <option value="12 December 16:00">12 December 16:00</option>
+          </select>
         </div>
     </div>
     <div style="margin-top: 30px; display: flex; flex-direction: column;justify-content: center;">
-      <button type="submit" class="btn btn-primary">Register</button><br>
+    <button type="submit" class="btn btn-primary" name="submit_pcr">Register</button><br>
     </div>
 
   </div>
 
     
   </section>
+  </form>
 
 </div>
 </body>

@@ -63,10 +63,10 @@
               <a class="nav-link" href="covid_centers.php">COVID help centers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Schedule</a>
+              <a class="nav-link" href="schedule.php">Schedule</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Specialists</a>
+              <a class="nav-link" href="doctors.php">Specialists</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php">Sign in</a>

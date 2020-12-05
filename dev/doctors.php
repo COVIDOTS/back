@@ -62,7 +62,7 @@
   
   <div class="news">
     <div class="row col-12">
-      <h1 style='margin-bottom: 50px;'>Medical Centers</h1>
+      <h1 style='margin-bottom: 50px;'>Specialists</h1>
     </div>
     <center >
         <section class="back2">
@@ -73,40 +73,41 @@
                 trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
                 }
             
-                $sql_query = " SELECT * from medical_center";
+                $sql_query = " SELECT * from doctors";
             
                 $result = oci_parse($db, $sql_query);
                 oci_execute($result);
 
-                $cnt = 1;
+                $cnt = 11;
 
                 while (($row = oci_fetch_array($result, OCI_BOTH)) != false) {
                     echo "<div class='faq-block'>\n";
                     
-                    if( $cnt % 2 == 1 ){
-                    $img_cnt = $cnt % 10;
-                    if( $img_cnt == 0 ){
-                        $img_cnt = 10;
-                        }
-                        echo "<img  src='images/".strval($img_cnt) .".jpg'>";
-                    }
+                //     if( $cnt % 2 == 1 ){
+                //     $img_cnt = $cnt % 10;
+                //     if( $img_cnt == 0 ){
+                //         $img_cnt = 10;
+                //         }
+                //         echo "<img  src='images/".strval($img_cnt) .".jpg'>";
+                //     }
 
                     echo "<div class='faq-div'>";
                     
-                    echo "<h4 style='font-size: 24px; font-weight: 500;'>".$row['MCENTER_NAME']."</h4>\n"; // medical center
-                    echo "<p style='font-size: 18px; font-weight: 600;'>City: ".$row['CITY']."</p>"; // address
-                    echo "<p style='font-size: 18px; font-weight: 600;'>Address: ".$row['ADDRESS']."</p>"; // address
+                    echo "<h4 style='font-size: 24px; font-weight: 500;'>".$row['DOCTOR_NAME']."</h4>\n"; // medical center
+                    echo "<p style='font-size: 18px; font-weight: 600;'>Experience: ".$row['EXPERIENCE']."</p>"; // address
+                    echo "<p style='font-size: 18px; font-weight: 600;'>Initial reception: ".$row['INITIAL_RECEPTION_']."</p>"; // address
+                    echo "<p style='font-size: 18px; font-weight: 600;'>Secondary reception: ".$row['SECONDARY_RECEPTION']."</p>"; // address
                     
 
                     echo "  </div>";
 
-                    if( $cnt % 2 == 0 ){
-                    $img_cnt = $cnt % 10;
-                    if( $img_cnt == 0 ){
-                        $img_cnt = 10;
-                        }
-                        echo "<img  src='images/".strval($img_cnt) .".jpg'>";
-                    }
+                    // if( $cnt % 2 == 0 ){
+                    // $img_cnt = $cnt % 10;
+                    // if( $img_cnt == 0 ){
+                    //     $img_cnt = 10;
+                    //     }
+                    //     echo "<img  src='images/".strval($img_cnt) .".jpg'>";
+                    // }
 
                     echo "</div>";
                 
