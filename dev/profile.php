@@ -1,93 +1,132 @@
-<?php
-
-$conn = oci_connect("ecoron", "qwerty123", "//localhost/orcl");
-
-$query = 'SELECT BLOBDATA FROM BTAB WHERE BLOBID = :MYBLOBID';
-$stmt = oci_parse ($conn, $query);
-$myblobid = 1;
-oci_bind_by_name($stmt, ':MYBLOBID', $myblobid);
-oci_execute($stmt);
-$arr = oci_fetch_array($stmt, OCI_ASSOC);
-$result = $arr['BLOBDATA']->load();
-
-header("Content-type: image/JPEG");
-echo $result;
-
-oci_close($conn);
-
-?>
-<?php
-  session_start();
-
-  // echo $_SESSION['user_id'];
-
-  if (!isset($_SESSION['email'])) {
-    $_SESSION['msg'] = "You must log in first";
-    $_SESSION['user_id'] = 'None';
-  }
-  if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = "None";
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['email']);
-    $_SESSION['user_id'] = 'None';
-    header("location: login.php");
-  }
-?>
-
-<!DOCTYPE php>
-<php>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>FAQ</title>
-  <link rel="stylesheet" type="text/css" href="style.css?ver=<?php echo rand(111,999)?>">
+  <title>COVIDHUB</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
-<body class="back" style="background-color: #d3f0e0">
-    <div class="row no-gutters profile-block">
-        <div class="photo-card">
-            <div class="col-md-4">
-                <!--Upload image-->
-                <img src="images/4.jpg" class="card-img" alt="Profile image">
-            </div>
+<body>
+<div class="container">
+  <header class="row navsector">
+    <div class = "col-3">
+        <h1>E-CORONA</h1>
+    </div>
+    <div class="col-9">
+      <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="index2.php">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="consultation.php">Consultation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="pcr.php">PCR check</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="covid_centers.php">COVID help centers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="schedule.php">Schedule</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="doctors.php">Specialists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profile.php">My profile</a>
+      </li>
+      <li class="nav-item">
+        <img src="images/avasmall.svg">
+      </li>
+      </ul>
+    </div>
+  </header>
+  <h1 class = "row col-12 gradienttext" style="margin-top: 5vh;">My profile</h1>
+  <div style="display: flex;justify-content: space-between;flex-direction: row;" class="row col-12">
+  <div class="row col-8" style="display: flec; justify-content: space-between; flex-direction: column;">
+  <div class=" card">
+    <img src="images/ava.svg">
+    <div style="display: flex;justify-content: space-around;align-items: center;">
+      <div class="cardtext" style="margin-right: 3vw">
+        <p style="font-size: 20px">Full name</p>
+        <p>Age</p>
+        <p>City</p>
+        <p>Contact number</p>
+        <p>Email</p>
+      </div>
+      <div class="cardtext">
+        <p style="color:#1A76DC; font-size: 20px">Testov Test</p>
+        <p>19</p>
+        <p>Almaty</p>
+        <p>87023690918</p>
+        <p>testovtest@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <div class = "card2" style="box-shadow: none;">
+    <div class="minisch">
+    <div style="padding: 20px; border-right: 1px solid rgba(0,79,168,0.3); width: 100px"><h6>Mon</h6></div>
+    <div class="insidesch2">
+          <div style="margin-left: -100px;">
+            <p style="font-size: 12px; margin-bottom: -2px">11:00-11:50</p>
+            <p style="font-size: 14px;">COVID prophylaxy</p> 
+          </div>
+          <div style="margin-left: -100px;">
+            <p style="font-size: 12px;margin-bottom: -2px">11:00-11:50</p>
+            <p style="font-size: 14px;">COVID prophylaxy</p> 
+          </div>
+
+      </div>
+    </div>
+    <div class="minisch">
+    <div style="padding: 20px; border-right: 1px solid rgba(0,79,168,0.3); width: 100px"><h6>Tue</h6></div>
+    <div class="insidesch2">
+          <div style="margin-left: -100px;">
+            <p style="font-size: 12px; margin-bottom: -2px">11:00-11:50</p>
+            <p style="font-size: 14px;">COVID prophylaxy</p> 
+          </div>
+          <div style="margin-left: -100px;">
+            <p style="font-size: 12px;margin-bottom: -2px">11:00-11:50</p>
+            <p style="font-size: 14px;">COVID prophylaxy</p> 
+          </div>
+
+      </div>
+    </div>
+    <div><a href="sch.html" style="color: #1A76DC; margin-left: 450px; margin-top: 5vh !important;">Full schedule</a></div>
+  </div>
+</div>
+  <div class="row col-4 rec">
+    <h5>Recomnmendations for you</h5>
+    <img src="images/mask.svg" style="margin-top: 5vh">
+    <p>Wear medical masks</p>
+    <img src="images/dist.svg">
+    <p>Keep the distance</p>
+    <img src="images/hand.svg">
+    <p>Clean your hands</p>
+  </div>
+  
+    
+  </div>
+
+
+  <footer class="footer" style="margin-top: 7vh;">
+   <div class = "row col-4">
+        <div class="icondiv">
+          <img src="images/call.svg">
+          <h5 style="padding: 10px;">103</h5>
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <!--Need data from table-->
-                <h1 class="card-title">Brand Name <?php echo $org_name; ?></h1>
-                <div class="sp_around">
-                    <h4 class="card-text">Адрес: <?php echo $address; ?></h4>
-                    <!--address--><h4></h4>
-                </div>
-                <div class="sp_around">
-                    <h4 class="card-text">Контакты: <?php echo $contacts; ?></h4>
-                    <!--contacts--><h4></h4>
-                </div>
-                <div class="sp_around">
-                    <h4 class="card-text">Материалы: <?php echo $type_of_materials; ?></h4>
-                    <!--материалы--><h4></h4>
-                </div>
-                <div class="sp_around">
-                    <h4 class="card-text">При сдаче старых вещей, вы получаете скидку: </h4>
-                    <!--Инфо о скидках--><h4>%<?php echo $sale; ?></h4>
-                </div>
-                <div>
-                    <h4 class="card-text">График работы: <?php echo $work_time; ?></h4>
-                    <!--working time--><h4></h4>
-                </div>
-
-                <div style="display: flex; justify-content: center; margin-top: 3vh;">
-                    <?php echo "<a href = '$url_request' class='change' style='color: white; padding: 5px; margin-top: 5vh;'> Оставить запрос </a>\n"; ?>
-                </div>
-                    <p style="display: flex; justify-content: center; margin-top: 3vh;" class="card-text"><small class="text-muted">Информация о организации</small></p>
-
-            </div>
+        <div class="icondiv" style="margin-right: 2vw;">
+          <img src="images/call.svg">
+          <h5 style="margin: 10px 0px;">8 702 369 0918</h5>
         </div>
     </div>
-    
-  	
+    <div class="row col-8" style="display: flex;justify-content: flex-end;">
+       <h1>E-CORONA</h1>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>

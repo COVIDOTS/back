@@ -37,6 +37,31 @@ if (isset($_POST['reg_user'])) {
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($contact_number)) { array_push($city, "City is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
+
+  //Altyn tut sql
+  $user_check_query = "SELECT DISTINCT username, email FROM users WHERE username='$username' OR email='$email'";
+  //$user_check_query = "SELECT * FROM users";
+  //echo $user_check_query;
+  $result = oci_parse($db, $user_check_query);
+  oci_execute($result);
+  oci_fetch_all($result, $user);
+
+  var_dump($user);
+
+  if ($user) { // if user exists
+    if ($user['USERNAME'][0] === $username) {
+      echo $user['USERNAME'][0];
+      echo $username;
+      array_push($errors, "Username already exists");
+    }
+
+    if ($user['EMAIL'][0] === $email) {
+      array_push($errors, "email already exists");
+    }
+  }
+
+  var_dump($errors);
+
   if (count($errors) == 0) {
     $stid = oci_parse($db, 'BEGIN insertUser(user_seq.NEXTVAL,:first_name, :last_name, :city, 
     :contact_number, :email, :password, null); END;');

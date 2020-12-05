@@ -52,7 +52,10 @@
               <a class="nav-link" href="doctors.php">Specialists</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.php">Sign out</a>
+              <a class="nav-link" href="profile.php">My profile</a>
+            </li>
+            <li class="nav-item">
+              <img src="images/avasmall.svg">
             </li>
           </ul>
         </div>
