@@ -38,7 +38,8 @@ if (isset($_POST['reg_user'])) {
   if (empty($contact_number)) { array_push($city, "City is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
   if (count($errors) == 0) {
-    $stid = oci_parse($db, 'INSERT INTO eco_users (user_uid,first_name, last_name, city, contact_number, email, password, profile_image) VALUES(user_seq.NEXTVAL,:first_name, :last_name, :city, :contact_number, :email, :password, :profile_image)');
+    $stid = oci_parse($db, 'BEGIN insertUser(user_seq.NEXTVAL,:first_name, :last_name, :city, 
+    :contact_number, :email, :password, null); END;');
     
 
     // oci_bind_by_name($stid, ':user_uid', $user_uid);
