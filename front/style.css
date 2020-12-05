@@ -52,6 +52,7 @@
 	height: 370px;
 	flex-direction: column;
 	padding:0px;
+	flex-wrap: nowrap;
 }
 .sch h5{
 	font-weight: 400 ;
@@ -237,4 +238,86 @@ table {
 .activetab {
 	background-color: var(--dblue) !important;
 	color: white;
+}
+
+.search {
+	margin: 5vh 0vw;
+}
+.btn-outline-secondary {
+	color: var(--dblue) !important;
+	border-color: var(--dblue) !important;
+}
+.btn-outline-secondary:hover {
+	color: white !important;
+	background-color: var(--dblue) !important;
+}
+
+.butlink {
+	color:white;
+}
+.butlink:hover {
+	text-decoration: none !important;
+	color: var(--dblue);
+}
+.gradienttext {
+	font-size: 28px;
+	font-weight: 700;
+	background: -webkit-linear-gradient(#1A76DC, #004FA8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card {
+	flex-direction: row !important;
+	padding: 20px 10px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 4vh 0vw;
+	border: 1px solid rgba(0,79,168,0.3) !important;
+	height: 280px;
+	box-shadow: 0px 5px 10px rgba(151,151,151,0.10);
+}
+.cardtext {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: 16px;
+}
+.rec {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: var(--mblue);
+	text-align: center;
+	padding: 25px 35px !important;
+	border: 1px solid rgba(0,79,168,0.3);
+	border-radius: 5px;
+	margin-top: 4vh;
+
+}
+.rec h5 {
+	text-align: center;
+	padding-bottom: 25px;
+	border-bottom: 1px solid var(--mblue);
+	font-size: 18px;
+}
+.rec p {
+	margin-top: 1vh;
+	margin-bottom: 4vh;
+}
+
+.card2 {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	color: var(--black);
+	border: 1px solid rgba(0,79,168,0.3);
+	border-radius: 5px;
+	height: 280px;
+}
+.minisch {
+	flex-direction: row !important;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
