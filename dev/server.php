@@ -49,18 +49,24 @@ if (isset($_POST['reg_user'])) {
   var_dump($user);
 
   if ($user) { // if user exists
-    if ($user['USERNAME'][0] === $username) {
-      echo $user['USERNAME'][0];
-      echo $username;
-      array_push($errors, "Username already exists");
-    }
-
     if ($user['EMAIL'][0] === $email) {
       array_push($errors, "email already exists");
     }
   }
 
   var_dump($errors);
+
+  function do_row_check($db){
+    $stid = oci_parse($db, "select count(*) from users");
+    oci_execute($stid);
+    oci_fetch_all($stid, $res);
+    echo "Number of rows: ", $res['C'][0], "<br>";
+  }
+
+  $starttime = microtime(TRUE);
+  for ($i = 0; $i < 10000; $i++) {
+    do_row_check($db);
+  }
 
   if (count($errors) == 0) {
     $stid = oci_parse($db, 'BEGIN insertUser(user_seq.NEXTVAL,:first_name, :last_name, :city, 
