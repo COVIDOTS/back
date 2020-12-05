@@ -60,6 +60,7 @@ if (isset($_POST['submit_consultation'])) {
         array_push($errors, "Age is required!");
     }
     if (count($errors) == 0) {
+        //Altynay tut sql
         $stid = oci_parse($conn, 'INSERT INTO online_consultation (first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(:first_name, :last_name, :age, :phone, :city, :doctor,:clinics, :consultation_date)');
 
         oci_bind_by_name($stid, ':first_name', $first_nameCN);

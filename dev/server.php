@@ -96,6 +96,7 @@ if (isset($_POST['login_user'])) {
 
     if (count($errors) == 0) {
         $new_password = md5($password);
+        //Altynay tut sql
         $query = "SELECT COUNT(*) FROM users WHERE email='$email'AND password='$password'";
         
         $results = oci_parse($db, $query);

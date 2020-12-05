@@ -23,7 +23,7 @@
     $e = oci_error();
     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
   }
-
+  //Altynay tut sql
   $sql_query = "SELECT phone  from online_pcr"; // something
 
   $result = oci_parse($conn, $sql_query);

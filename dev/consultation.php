@@ -111,6 +111,7 @@
           <label for="exampleFormControlSelect1">Clinics</label>
           <select class="form-control" id="exampleFormControlSelect1" name="medicalOption">
             <option></option>
+            <!-- Altynay mojno tut kak-to optimizirovat'? -->
             <option value="EMIRMED Medical Center">EMIRMED Medical Center</option>
             <option value="Medical Center ALGAMED">Medical Center "ALGAMED</option>
             <option value="Institute of Molecular Medicine">Institute of Molecular Medicine</option>

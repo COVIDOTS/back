@@ -72,7 +72,7 @@
                 $e = oci_error();
                 trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
                 }
-            
+                //Altynay tut sql
                 $sql_query = " SELECT * from medical_center";
             
                 $result = oci_parse($db, $sql_query);

@@ -89,6 +89,7 @@
         <div class="form-group horizmargin">
           <label for="exampleFormControlSelect1">Center</label>
           <select class="form-control" id="exampleFormControlSelect1" name="punktPCR">
+          <!-- Altynay mojno tut kak-to optimizirovat'? -->
             <option></option>
             <option value="PCV 'National Center of Expertise'">PCV "National Center of Expertise"</option>
             <option value="Medical Partners Korea Clinic LLP">Medical Partners Korea Clinic LLP</option>
