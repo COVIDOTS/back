@@ -11,6 +11,8 @@ $password = "";
 $user_uid = "user_seq.NEXTVAL";
 $profile_image = null;
 
+$user = "";
+
 $errors = array(); 
 
 // connect to the database
@@ -39,7 +41,19 @@ if (isset($_POST['reg_user'])) {
   if (empty($password)) { array_push($errors, "Password is required"); }
 
   //Altyn tut sql
-  $user_check_query = "SELECT DISTINCT username, email FROM users WHERE username='$username' OR email='$email'";
+  $user_check_query = "
+  CREATE OR REPLACE PACKAGE BODY DISTINCTUSERS AS
+    CURSOR CUR IS SELECT DISTINCT email FROM eco_users where email = $email ;
+    PROCEDURE distinctUser(p_email IN OUT VARCHAR2) IS
+      IF NOT CUR%ISOPEN THEN
+        OPEN CUR;
+      END IF;
+        FETCH CUR INTO p_email;
+        IF CUR%NOTFOUND THEN
+          CLOSE CUR; EXIT;
+        END IF;
+    END distinctUser;
+  END DISTINCTUSERS;";
   //$user_check_query = "SELECT * FROM users";
   //echo $user_check_query;
   $result = oci_parse($db, $user_check_query);
@@ -55,18 +69,6 @@ if (isset($_POST['reg_user'])) {
   }
 
   var_dump($errors);
-
-  function do_row_check($db){
-    $stid = oci_parse($db, "select count(*) from users");
-    oci_execute($stid);
-    oci_fetch_all($stid, $res);
-    echo "Number of rows: ", $res['C'][0], "<br>";
-  }
-
-  $starttime = microtime(TRUE);
-  for ($i = 0; $i < 10000; $i++) {
-    do_row_check($db);
-  }
 
   if (count($errors) == 0) {
     $stid = oci_parse($db, 'BEGIN insertUser(user_seq.NEXTVAL,:first_name, :last_name, :city, 
