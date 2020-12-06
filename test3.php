@@ -6,10 +6,7 @@ if (!$conn) {
     trigger_error(htmlentities($m['message']), E_USER_ERROR);
 }
 
-$create = "CREATE TABLE bind_example(name VARCHAR(20))";
-$stid = oci_parse($conn, $create);
-oci_execute($stid);
-
+//Altunka tut doljen byt' is table o
 $create_pkg = "
 CREATE OR REPLACE PACKAGE ARRAYBINDPKG1 AS
   TYPE ARRTYPE IS TABLE OF VARCHAR(20) INDEX BY BINARY_INTEGER;

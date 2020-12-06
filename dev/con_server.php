@@ -70,7 +70,8 @@ if (isset($_POST['submit_consultation'])) {
     }
     if (count($errors) == 0) {
         //Altynay tut sql
-        $stid = oci_parse($conn, "INSERT INTO online_consultation (consultation_id, user_uid , doctor_id, first_name, last_name, age, phone, city, doctor, clinics, consultation_date) VALUES(cons_seq.NEXTVAL, :user_uid, 10001, :first_name, :last_name, :age, :phone, :city, :doctor,:clinics, :consultation_date)");
+        $stid = oci_parse($conn, "BEGIN insert_consultation(cons_seq.NEXTVAL, :user_uid, 10001, :first_name, 
+        :last_name, :age,  :phone, :city, :doctor,:clinics, :consultation_date); END;");
 
         oci_bind_by_name($stid, ':user_uid', $user_uid);
         oci_bind_by_name($stid, ':first_name', $first_nameCN);
@@ -116,7 +117,7 @@ if (isset($_POST['submit_pcr'])) {
         array_push($errors, "Phone is required!");
     }
     if (count($errors) == 0) {
-        $stid = oci_parse($conn, 'INSERT INTO online_pcr (pcr_id, center_id, user_uid, first_name, last_name,  phone, city, punkt, pcr_date) VALUES( pcr_seq.NEXTVAL,5041, :user_uid, :first_name, :last_name, :phone,  :city, :punkt,:pcr_date)');
+        $stid = oci_parse($conn, 'BEGIN insert_consultation(pcr_seq.NEXTVAL,5041, :user_uid, :first_name, :last_name, :phone,  :city, :punkt,:pcr_date); END;');
 
         oci_bind_by_name($stid, ':user_uid', $user_uid);
         oci_bind_by_name($stid, ':first_name', $first_namePR);
